@@ -67,21 +67,16 @@ f = open("day-1-2022-input.txt", "r")
 f_list = f.readlines()
 calories = [x.strip() for x in f_list]
 
-most_cal_total = 0
 cal_total = 0
 list_cal_total = []
-for c in range(len(calories)):
 
+for c in range(len(calories)):
     if calories[c] != "":
         cal_total += int(calories[c])
     elif calories[c] == "":
         list_cal_total.append(cal_total)
-
-        if cal_total > most_cal_total:
-            most_cal_total = cal_total
-
         cal_total = 0
 
 list_cal_total.sort(reverse=True)
-print("most_cal_total:", most_cal_total)
+print("Most Cal Total:", list_cal_total[0])
 print("Calories of top 3 elves:", sum(list_cal_total[0:3]))
