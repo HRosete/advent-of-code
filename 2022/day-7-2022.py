@@ -82,13 +82,20 @@ for i in range(len(cmds)):
         # dir = prev_dir
         # prev_dir = prev_2_dir
         # prev_2_dir = ""
+        _dir = dir
+        _prev = prev_dir
+        _prev_2 = prev_2_dir
+
         prev_2_dir = prev_dir
         prev_dir = dir
         dir = _cmd[1]
         value = {}
         print("prev_2_dir:", prev_2_dir)
+        print("type(prev_2_dir):", type(prev_2_dir))
         print("prev_dir:", prev_dir)
+        print("type(prev_dir):", type(prev_dir))
         print("dir:", dir)
+        print("type(dir):", type(dir))
         if prev_dir:
             if prev_2_dir:
                 file_system[prev_2_dir][prev_dir] = value
@@ -96,6 +103,10 @@ for i in range(len(cmds)):
                 file_system[prev_dir][dir] = value
         else:
             file_system[dir] = value
+
+        dir = _dir
+        prev_dir = _prev
+        prev_2_dir = _prev_2
 
     elif _cmd[0].isdigit():
         value = int(_cmd[0])
