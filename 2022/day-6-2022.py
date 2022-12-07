@@ -58,18 +58,19 @@ You can also [Share] this puzzle.
 f = open("day-6-2022-input.txt", "r")
 data = f.readlines()[0]
 
-for i in range(len(data)):
-    marker = data[i:i + 4]
-    message = data[i:i + 14]
-    unique_char_marker = len(set(marker))
-    unique_char_message = len(set(message))
 
-    # if unique_char_marker == 4:
-    #     indx = data.index(marker)
-    #     print(indx + 4)
-    #     break
+def index_getter(lst, n=1):
+    for i in range(len(lst)):
+        word = lst[i:i + n]
+        unique_chars = len(set(word))
 
-    if unique_char_message == 14:
-        indx = data.index(marker)
-        print(indx + 14)
-        break
+        if unique_chars == int(n):
+            _indx = lst.index(word)
+            indx = _indx + int(n)
+            return indx
+
+
+marker = index_getter(data, 4)
+message = index_getter(data, 14)
+print("Marker's index:", marker)
+print("Message's index:", message)
